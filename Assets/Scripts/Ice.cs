@@ -3,6 +3,8 @@ using UnityEngine;
 public class Ice : MonoBehaviour
 {
     private bool interactable = false;
+
+    public SpriteRenderer hint;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,11 +20,13 @@ public class Ice : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.name == "Player")
-            inner.gameObject.SetActive(true);
+            interactable = true;
+            hint.gameObject.SetActive(true);
     }
 
     void OnTriggerExit2D(Collider2D col) {
         if (col.gameObject.name == "Player")
-            inner.gameObject.SetActive(false);
+            interactable = false;
+            hint.gameObject.SetActive(false);
     }
 }
